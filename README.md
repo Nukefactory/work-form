@@ -24,7 +24,7 @@ Single page form with basic file upload function. Sends content via PHP mail.
 Subfolders are labelled in 'src'. HTML pages are built using [pug](https://pugjs.org) but can be substituted with standard HTML if preferred (standard HTML will still copy to dist on build).
 
 ## Gotchas
-'dist' folder will build and run browsersync for local building, but must be uploaded/run from server with PHP available in order to receive completed form contents. Think LAMP/MAMP et al if you don't have a server handy.
+'dist' folder will build and run browsersync for local building, but must be uploaded/run from server with PHP available in order to receive completed form contents. Think LAMP/MAMP et al if you don't have a server handy. First couple of lines in 'send-mail.php' need to be updated with whatever email you want to receive at/send from before anything will arrive.
 
 ## Have at it
 Feel free to hack and build upon as needed. Pull requests for improvements welcomed. Hope it can be of some use.
