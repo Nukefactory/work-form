@@ -1,0 +1,22 @@
+{
+  "name": "work-form",
+  "description": "Submission form for Graphic Design requests.",
+  "main": "index.html",
+  "authors": [
+    "Tim Newcombe"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "motion-ui": "^1.2.2",
+    "foundation-sites": "^6.3.1"
+  }
+}

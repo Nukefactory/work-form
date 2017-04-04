@@ -1,0 +1,112 @@
+doctype html
+- var title = "Work Request"
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title}
+    link(rel='stylesheet', href='css/app.css', type='text/css')
+
+  body
+    //-.row
+      include ./includes/_graphics-menu.pug
+    #contact_results
+    .row.gf-wrap
+      .column.small-12
+        .row
+          .column.small-12.small-centered
+            h1.title.text-center
+              span #{title}
+      .column.small-12
+        .row
+          .column.small-12
+            form.basic#contact_body.ajax(action='send-mail.php', method='post', enctype='multipart/form-data', accept-charset='utf-8')
+              fieldset.fieldset
+                h2 1. Project Owner
+                p Please enter the contact details for the person who is ultimately responsible for the work that is being requested.
+                .row
+                  .column.small-12.medium-6
+                    input(type='text', name='ownername', autocomplete='on', placeholder='your name', autofocus)
+                  .column.small-12.medium-6
+                    input(type='email', name='owneremail', autocomplete='on', placeholder='your email')
+                .row.column
+                  h3 Stakeholders
+                  p Add <em>all</em> additional parties who are to be involved in proofing and approvals. Must be listed here to be involved.
+                .row
+                  .stakeholders.column.small-12
+                    div.medium-collapse
+                      .column.small-10.medium-11
+                        input(type='text', name='extraname_1', placeholder='name')
+                        input(type='email', name='extraemail_1', placeholder='email')
+                      .column.small-2.medium-1.end
+                        a(class='button success add-field', href='#') &plus;
+                h2 2. Details
+                h3 Project title
+                input(type='text', name='title')
+                h3 Project description
+                p Provide a detailed description of the work being requested. Is this a print project, an email, a web page etc.? What is the target audience? Describe them. What is the intended goal of the project?
+                textarea(name='description', rows='10', cols='10')
+                h2 3. Suggested Milestones
+                .row.milestones
+                  .column.small-12
+                    p Design department time is already booked weeks in advance. Please plan accordingly. <br />You will be contacted shortly after submission of this form if your desired completion date cannot be met.
+                  .column.small-12.medium-7
+                    h3 Desired completion date
+                    input(type='text', id='datepicker', placeholder='select', name='due_date')
+                  .column.small-12.medium-5
+                    h5 Additional milestone <span class='nowrap'>(if applicable)</span>
+                    div.small-collapse
+                      .column.small-12
+                          input(type='text', name='extramilestone_1', placeholder='description')
+                          input(type='text', name='extradate_1', id='datepicker_1', placeholder='select')
+                      //-.column.small-2
+                        a(class='button success add-date', href='#') &plus;
+                  //-.row.files
+                    //-.column.small-12
+                h2 4. Files
+                p Upload any required files using the file selector button below (you can choose multiple files in the selection window by ctrl/cmd or shift + clicking). 15MB total maximum.
+                .row.files
+                  .column.small-12.medium-6.file-selector-frame
+                    div
+                      input(type='file', name='file_attach[]', id='file', multiple)
+                  .column.small-12.medium-6
+                    h3 Accepted formats
+                    .row
+                      .column.small-6
+                        p <strong>Text</strong><br />
+                          | Microsoft Word (.doc/.docx)<br />
+                          | Rich Text (.rtf)<br />
+                          | Markdown (.txt/.md)<br />
+                      .column.small-6
+                        p <strong>Image</strong><br />
+                          | Jpeg (.jpg)<br />
+                          //-| 24-bit PNG (.png)<br />
+                          | 24-bit TIFF (.tiff)<br />
+                          | Adobe Photoshop (.psd)
+                    .row
+                      .column
+                        .warning
+                          p All documents must be correct and final. All tracked changes must be accepted/removed before submitting.
+                          p Image files must be <em>minimum</em> 3,000,000 pixels total (W x H).
+                    //-.row.column.small-12
+                      p <strong>Other</strong><br />
+                        | Excel/CSV (.xls/.xlsx/.csv)<br />
+                        | PDF (.pdf)
+                    //-fieldset.fieldset
+                      div#fine-uploader
+                      script(src="js/fine-uploader.min.js", type="text/javascript")
+                      include ./includes/_fine-uploader.html
+    .base
+      .row.footer
+        .column.small-12.align-self-bottom
+          p Please ensure all content is finalised and has been approved by <em>all</em> listed project stakeholders <em>before</em> submitting. Agreed upon completion dates are subject to (1) Submitted material being complete, correct and final. (2) One round of design revisions. Changes to submitted material, or requests for additional rounds of design revisions, may cause delays and require the project to be rescoped with a new schedule.
+          input.button.success#submit(type='submit', value='Submit', form='contact_body', data-open='upload-progress')
+
+    div#upload-progress.progress(role="progressbar", tabindex="0", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100")
+      div.progress-bar.progress-meter
+
+
+
+    //-include ./includes/_scripts.pug
+    script(src="js/scripts.min.js")
